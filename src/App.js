@@ -1,23 +1,11 @@
 import './App.css';
 
-const Hello = (props) => {
-  console.log(props);
-  return (
-    <div>
-      <p>Hello {props.name}, you are {props.age} years old</p>
-    </div>
-  );
-}
 
 const App = () => {
-  const name = "Peter";
-  const age = 10;
-  const friends = ["maya", "cookkoo"];
-
   return (
     <div>
-      <Hello name = {name} age = {age}/>
-      <p>{friends}</p>
+      <h1>Welcome to Online Poker Chips!</h1>
+      <p>How many players?</p>
     </div>
   );
 }
