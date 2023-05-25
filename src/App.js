@@ -1,26 +1,11 @@
 import './App.css';
 import { useState } from 'react';
 
-const Button = (props) => {
-  return (
-      <button onClick={props.handleClick}>
-        {props.text}
-      </button>
-  );
-}
-
-const Match = (props) => {
-  if (props.startMatch) {
-    return (
-      <div>
-        Match Begin!
-      </div>
-    )
-  }
-}
+import Button from './components/Button.component'
+import Match from './components/Match.component'
 
 const App = () => {
-  const [players, setPlayers] = useState(1);
+  const [players, setPlayers] = useState(2);
   const [startMatch, setMatch] = useState(false);
 
   return (
@@ -29,8 +14,8 @@ const App = () => {
       <p>How many players?</p>
       <p>{players} players</p>
       <Button handleClick = {() => {
-        if (players === 0){
-          setPlayers(0)  
+        if (players === 2){
+          setPlayers(2)  
         } else {
           setPlayers(players - 1)} 
         }
