@@ -36,6 +36,7 @@ const App = () => {
       } text="-" />
       <Button handleClick = {() => setNumPlayers(numPlayers + 1)} text="+" />
       <Button handleClick = {handleStart} text="OK" />
+      
       <Match startMatch={startMatch} players={players} />
     </div>
   );
