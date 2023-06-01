@@ -20,7 +20,7 @@ const App = () => {
     }
     setPlayers(playerArray);
     setMatch(true);
-  }
+  };
 
   return (
     <div>
