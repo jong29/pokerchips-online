@@ -7,17 +7,22 @@ import Match from './components/Match.component'
 const App = () => {
   const [numPlayers, setNumPlayers] = useState(2);
   const [startMatch, setMatch] = useState(false);
-  const [players, setPlayers] = useState([{id:1, name:'connor'}, {id:2, name:'mcgregor'}]);
+  const [players, setPlayers] = useState([]);
+  const [initialDealer, setInitialDealer] = useState(0);
   
   const handleStart = () => {
     const playerArray = []
     for (let i=0; i<numPlayers; i++) {
       const newPlayer = {
-        id: players.length + 1,
+        id: playerArray.length + 1,
         name: `Player ${i}`
       };
       playerArray.push(newPlayer);
     }
+
+    const initialDealer = Math.floor(Math.random()*numPlayers);
+    
+    setInitialDealer(initialDealer);
     setPlayers(playerArray);
     setMatch(true);
   };
@@ -36,8 +41,7 @@ const App = () => {
       } text="-" />
       <Button handleClick = {() => setNumPlayers(numPlayers + 1)} text="+" />
       <Button handleClick = {handleStart} text="OK" />
-      
-      <Match startMatch={startMatch} players={players} />
+      <Match startMatch={startMatch} players={players} initialDealer={initialDealer}/>
     </div>
   );
 }
