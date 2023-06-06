@@ -3,21 +3,29 @@ import { useState, useEffect } from "react";
 const Match = (props) => {
   const { players, initialDealer } = props;
   const numPlayers = players.length;
-  const [role, setRole] = useState(Array(numPlayers).fill(0));
+  const [dealer, setDealer] = useState(-1);
   
   useEffect(() => {
-    setRole(role.map((value, i) => {
-      return i === initialDealer ? 0 : 1
-    }));
+    setDealer(initialDealer);
   }, []);
   
-  console.log("🚀 ~ file: Match.component.js:7 ~ Match ~ role:", role)
-  console.log("dealer" + initialDealer);
+  console.log("dealer" + dealer);
+
+  const getRole = (id) => {
+    if (numPlayers < 3) {
+      if (id === dealer) return "Dealer | Big Blind";
+      return "Small Blind";
+    }
+
+    if (id === dealer) return "Dealer";
+    if (id === (dealer+1)%numPlayers) return "Small Blind"
+    if (id === (dealer+2)%numPlayers) return "Big Blind"
+  }
   
   return (
     <div>
-      {players.map(player => 
-        <div key={player.id}>{player.name}</div>
+      {players.map((player, index) => 
+        <div key={player.id}>{player.name} {getRole(player.id)}</div>
       )}
     </div>
   )
