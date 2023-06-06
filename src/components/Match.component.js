@@ -12,20 +12,21 @@ const Match = (props) => {
   console.log("dealer" + dealer);
 
   const getRole = (id) => {
+    const nid = id-1;
     if (numPlayers < 3) {
-      if (id === dealer) return "Dealer | Big Blind";
+      if (nid === dealer) return "Dealer/Big-Blind";
       return "Small Blind";
     }
 
-    if (id === dealer) return "Dealer";
-    if (id === (dealer+1)%numPlayers) return "Small Blind"
-    if (id === (dealer+2)%numPlayers) return "Big Blind"
+    if (nid === dealer) return "Dealer";
+    if (nid === (dealer+1)%numPlayers) return "Small-Blind"
+    if (nid === (dealer+2)%numPlayers) return "Big-Blind"
   }
   
   return (
     <div>
       {players.map((player, index) => 
-        <div key={player.id}>{player.name} {getRole(player.id)}</div>
+        <div key={player.id}>|{player.name}| {getRole(player.id)}</div>
       )}
     </div>
   )

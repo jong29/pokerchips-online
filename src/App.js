@@ -28,22 +28,14 @@ const App = () => {
     setMatch(true);
   };
 
-  if (!startMatch){
-    return (
-      <div>
-        <h1>Welcome to Online Poker Chips!</h1>
-        <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h1>Welcome to Online Poker Chips!</h1>
-        <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
-        <Match players={players} initialDealer={initialDealer}/>
-      </div>
-    );
-  }
+  return (
+    <div className='main'>
+      <h1>Welcome to Online Poker Chips!</h1>
+      <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
+      {startMatch ? <Match players={players} initialDealer={initialDealer}/> : null}
+    </div>
+  );
+  
 }
 
 export default App;
