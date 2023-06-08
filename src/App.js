@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import NumPlayers from './components/NumPlayers';
 import Match from './components/Match.component';
-import Settings from './components/Settings.component';
+import SetChips from './components/SetChips.component';
 
 const App = () => {
   const [numPlayers, setNumPlayers] = useState(2);
@@ -37,7 +37,7 @@ const App = () => {
       <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
       {startMatch ? <Match players={players} initialDealer={initialDealer}/> : null}
       <button onClick={() => setShowSettings(!showSettings)}>Settings</button>
-      {showSettings ? <Settings handleBlind={() => setBlind} handleBuyin={() => setBuyin} /> : null}
+      {showSettings ? <SetChips handleBlind={() => setBlind} handleBuyin={() => setBuyin} /> : null}
     </div>
   );
   

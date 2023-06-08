@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Settings = ({ handleBlind, handleBuyin}) => {
+const SetChips = ({ handleBlind, handleBuyin}) => {
 
   const [blind, setBlind] = useState(10);
   const [buyin, setBuyin] = useState(1000);
@@ -34,4 +34,4 @@ const Settings = ({ handleBlind, handleBuyin}) => {
     )
 };
 
-export default Settings;
+export default SetChips;
