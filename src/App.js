@@ -11,9 +11,9 @@ const App = () => {
   const [players, setPlayers] = useState([]);
   const [initialDealer, setInitialDealer] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
-  const [ blind, setBlind ] = useState(10);
-  const [ buyin, setBuyin ] = useState(1000);
-
+  const [blind, setBlind] = useState(10);
+  const [buyin, setBuyin] = useState(1000);
+  
   const handleStart = () => {
     const playerArray = []
     for (let i=0; i<numPlayers; i++) {
@@ -23,21 +23,21 @@ const App = () => {
       };
       playerArray.push(newPlayer);
     }
-
+    
     const initialDealer = Math.floor(Math.random()*numPlayers);
     
     setInitialDealer(initialDealer);
     setPlayers(playerArray);
     setMatch(true);
   };
-
+  
   return (
     <div className='main'>
       <h1>Welcome to Online Poker Chips!</h1>
       <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
       {startMatch ? <Match players={players} initialDealer={initialDealer}/> : null}
       <button onClick={() => setShowSettings(!showSettings)}>Settings</button>
-      {showSettings ? <SetChips handleBlind={() => setBlind} handleBuyin={() => setBuyin} /> : null}
+      {showSettings ? <SetChips handleBlind={setBlind} handleBuyin={setBuyin} handleShowSettings={setShowSettings}/> : null}
     </div>
   );
   

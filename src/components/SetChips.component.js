@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const SetChips = ({ handleBlind, handleBuyin}) => {
+const SetChips = ({ handleBlind, handleBuyin, handleShowSettings}) => {
 
-  const [blind, setBlind] = useState(10);
-  const [buyin, setBuyin] = useState(1000);
+  const [blind, setBlind] = useState("10");
+  const [buyin, setBuyin] = useState("1000");
 
 
   const onBlindChange = (event) => {
@@ -17,19 +17,20 @@ const SetChips = ({ handleBlind, handleBuyin}) => {
   const handleSettings = () => {
     handleBlind(blind);
     handleBuyin(buyin);
+    handleShowSettings(false);
   }
 
   return (
       <div>
         <div>
           Buy-in: 
-          <input type="number" onChange={onBuyinChange} value="1000"></input>
+          <input type="number" onChange={onBuyinChange} value={buyin}></input>
         </div>
         <div>
           Blind: 
-          <input type="number" onChange={onBlindChange} value="10"></input>
+          <input type="number" onChange={onBlindChange} value={blind}></input>
         </div>
-        <button handleClick={handleSettings}>OK</button>
+        <button onClick={handleSettings}>done</button>
       </div>
     )
 };
