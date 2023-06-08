@@ -3,13 +3,16 @@ import { useState } from 'react';
 
 import NumPlayers from './components/NumPlayers';
 import Match from './components/Match.component';
-
+import Settings from './components/Settings.component';
 
 const App = () => {
   const [numPlayers, setNumPlayers] = useState(2);
   const [startMatch, setMatch] = useState(false);
   const [players, setPlayers] = useState([]);
   const [initialDealer, setInitialDealer] = useState(0);
+  const [showSettings, setShowSettings] = useState(false);
+  const [ blind, setBlind ] = useState(10);
+  const [ buyin, setBuyin ] = useState(1000);
 
   const handleStart = () => {
     const playerArray = []
@@ -33,6 +36,8 @@ const App = () => {
       <h1>Welcome to Online Poker Chips!</h1>
       <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
       {startMatch ? <Match players={players} initialDealer={initialDealer}/> : null}
+      <button onClick={() => setShowSettings(!showSettings)}>Settings</button>
+      {showSettings ? <Settings handleBlind={() => setBlind} handleBuyin={() => setBuyin} /> : null}
     </div>
   );
   

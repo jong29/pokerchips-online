@@ -9,8 +9,6 @@ const Match = (props) => {
     setDealer(initialDealer);
   }, []);
   
-  console.log("dealer" + dealer);
-
   const getRole = (id) => {
     const nid = id-1;
     if (numPlayers < 3) {
