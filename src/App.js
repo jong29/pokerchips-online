@@ -33,11 +33,11 @@ const App = () => {
   
   return (
     <div className='main'>
-      <h1>Welcome to Online Poker Chips!</h1>
+      <h1>Online Poker Chips!</h1>
       <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
-      {startMatch ? <Match players={players} initialDealer={initialDealer}/> : null}
+      {startMatch ? <Match players={players} initialDealer={initialDealer} blind={blind} buyin={buyin} /> : null}
       <button onClick={() => setShowSettings(!showSettings)}>Settings</button>
-      {showSettings ? <SetChips handleBlind={setBlind} handleBuyin={setBuyin} handleShowSettings={setShowSettings}/> : null}
+      {showSettings ? <SetChips handleBlind={setBlind} handleBuyin={setBuyin} handleShowSettings={setShowSettings} /> : null}
     </div>
   );
   
