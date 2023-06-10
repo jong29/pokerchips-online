@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import Round from './Round.component';
 
 const Match = (props) => {
   const { players, initialDealer, blind, buyin } = props;
   const numPlayers = players.length;
   const [dealer, setDealer] = useState(-1);
-  const [pot, setPot] = useState(0);
+  
   const [chips, setChips] = useState([]);
   const [playing, setPlaying] = useState([]);
 
@@ -30,9 +31,10 @@ const Match = (props) => {
   return (
     <div>
       <h3 className="round-info">Big-Blind: {blind} | Small-Blind: {Math.floor(blind/2)}</h3>
-      <div>Current Pot: {pot}</div>
+  
+      <Round />
       {players.map((player, index) => 
-        <div key={player.id}>|{player.name}| {getRole(player.id)}| Chips: {chips[index]}</div>
+        <div key={player.id}>|{player.name}| Chips: {chips[index]} | {getRole(player.id)}</div>
       )}
     </div>
   )
