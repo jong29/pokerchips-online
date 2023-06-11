@@ -11,8 +11,8 @@ const App = () => {
   const [players, setPlayers] = useState([]);
   const [initialDealer, setInitialDealer] = useState(0);
   const [showSettings, setShowSettings] = useState(false);
-  const [blind, setBlind] = useState(10);
-  const [buyin, setBuyin] = useState(1000);
+  const [blind, setBlind] = useState("10");
+  const [buyin, setBuyin] = useState("1000");
   
   const handleStart = () => {
     const playerArray = []
