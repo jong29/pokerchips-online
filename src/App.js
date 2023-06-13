@@ -18,7 +18,7 @@ const App = () => {
     const playerArray = []
     for (let i=0; i<numPlayers; i++) {
       const newPlayer = {
-        id: playerArray.length + 1,
+        id: playerArray.length,
         name: `Player ${i}`
       };
       playerArray.push(newPlayer);

@@ -1,4 +1,3 @@
-import Button from './Button.component'
 
 const NumPlayers = ({ handleStart, handleSetPlayers, numPlayers }) => {
 
@@ -6,15 +5,15 @@ const NumPlayers = ({ handleStart, handleSetPlayers, numPlayers }) => {
         <div>
             <p>How many players?</p>
             <p>{numPlayers} players</p>
-            <Button handleClick = {() => {
+            <button onClick = {() => {
                 if (numPlayers === 2){
                     handleSetPlayers(2)  
                 } else {
                     handleSetPlayers(numPlayers - 1)} 
                 }
-            } text="-" />
-            <Button handleClick = {() => handleSetPlayers(numPlayers + 1)} text="+" />
-            <Button handleClick = {handleStart} text="OK" />
+            }>-</button>
+            <button onClick = {() => handleSetPlayers(numPlayers + 1)}>+</button>
+            <button onClick = {handleStart}>OK</button>
         </div>
     )
 }
