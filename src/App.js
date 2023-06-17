@@ -6,7 +6,8 @@ import Match from './components/Match.component';
 import SetChips from './components/SetChips.component';
 
 const App = () => {
-  const [numPlayers, setNumPlayers] = useState(2);
+  const [playerNum, setPlayerNum] = useState(2);
+  const [playerSelect, setPlayerSelect] = useState(true);
   const [startMatch, setMatch] = useState(false);
   const [players, setPlayers] = useState([]);
   const [initialDealer, setInitialDealer] = useState(0);
@@ -16,15 +17,16 @@ const App = () => {
   
   const handleStart = () => {
     const playerArray = []
-    for (let i=0; i<numPlayers; i++) {
+    for (let i=0; i<playerNum; i++) {
       const newPlayer = {
         id: playerArray.length,
         name: `Player ${i}`
       };
       playerArray.push(newPlayer);
+      setPlayerSelect(false);
     }
     
-    const initialDealer = Math.floor(Math.random()*numPlayers);
+    const initialDealer = Math.floor(Math.random()*playerNum);
     
     setInitialDealer(initialDealer);
     setPlayers(playerArray);
@@ -36,7 +38,7 @@ const App = () => {
       <h1>Online Poker Chips!</h1>
       <button onClick={() => setShowSettings(!showSettings)}>Settings</button>
       {showSettings ? <SetChips handleBlind={setBlind} handleBuyin={setBuyin} handleShowSettings={setShowSettings} /> : null}
-      <NumPlayers handleStart={handleStart} handleSetPlayers={setNumPlayers} numPlayers={numPlayers} />
+      {playerSelect ? <NumPlayers handleStart={handleStart} handleSetPlayers={setPlayerNum} numPlayers={playerNum} /> : null}
       {startMatch ? <Match players={players} initialDealer={initialDealer} blind={blind} buyin={buyin} /> : null}
     </div>
   );
