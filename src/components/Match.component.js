@@ -36,7 +36,7 @@ const Match = (props) => {
   
       <Round />
       {players.map((player) => {
-        return(<PlayerInfo key={player.id} name={player.name} chips={chips[player.id]} role={getRole(player.id)} />)
+        return(<PlayerInfo key={player.id} name={player.name} chips={chips[player.id]} role={getRole(player.id)} blind={blind}/>)
       })}
     </div>
   )
