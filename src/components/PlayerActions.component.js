@@ -42,6 +42,13 @@ const PlayerActions = (props) => {
     const handleClear = () => {
         checkSetBet(0);
     }
+    
+    const handleOne = () => {
+        if (addRemove === "add") {
+            
+        }
+    }
+
 
     const checkSetBet = (n) => {
         if (n <= chips) {
@@ -50,6 +57,7 @@ const PlayerActions = (props) => {
             setBet(chips);
         }
     }
+
 
     return(
         <div>

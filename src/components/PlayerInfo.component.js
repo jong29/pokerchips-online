@@ -20,7 +20,7 @@ const PlayerInfo = (props) => {
                 {name}| Chips: {chips} | {role}
                 <button onClick={promptAction}>Select</button>
             </div>
-            {showActions ? <PlayerActions blind={blind} chips={cihps}/> : null}
+            {showActions ? <PlayerActions blind={blind} chips={chips}/> : null}
         </div>
     )
 };
