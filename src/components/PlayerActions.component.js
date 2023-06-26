@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const PlayerActions = (props) => {
-    const { blind, chips } = props;
+    const { blind, chips, pot } = props;
 
     const [bet, setBet] = useState(0);
     const [potChips, setPotChips] = useState("pot");
@@ -66,9 +66,15 @@ const PlayerActions = (props) => {
     }
     
     const handleRatio = (ratio) => {
-        // if (potChips === "pot") {
-        //     checkSetBet(pot)
-        // }
+        if (potChips === "pot") {
+            checkSetBet(Math.floor(parseInt(pot)*ratio));
+        } else {
+            checkSetBet(Math.floor(parseInt(chips)*ratio));
+        }
+    }
+
+    const handleBet = () => {
+        return
     }
 
 

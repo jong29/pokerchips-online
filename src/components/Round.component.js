@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-const Round = (props) => {
-    const [pot, setPot] = useState(0);
+const Round = ({pot}) => {
     const selectWinners = () => {
         // maybe a checkbox form for selection
         // later make it so that same button is used for betting

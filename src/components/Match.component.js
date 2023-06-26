@@ -6,7 +6,7 @@ const Match = (props) => {
   const { players, initialDealer, blind, buyin } = props;
   const numPlayers = players.length;
   const [dealer, setDealer] = useState(-1);
-  
+  const [pot, setPot] = useState(0);
   const [chips, setChips] = useState([]);
   const [playing, setPlaying] = useState([]);
 
@@ -34,9 +34,9 @@ const Match = (props) => {
     <div>
       <h3 className="round-info">Big-Blind: {blind} | Small-Blind: {Math.floor(blind/2)}</h3>
   
-      <Round />
+      <Round pot={pot}/>
       {players.map((player) => {
-        return(<PlayerInfo key={player.id} name={player.name} chips={chips[player.id]} role={getRole(player.id)} blind={blind}/>)
+        return(<PlayerInfo key={player.id} name={player.name} chips={chips[player.id]} role={getRole(player.id)} blind={blind} pot={pot}/>)
       })}
     </div>
   )
