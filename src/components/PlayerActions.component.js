@@ -43,19 +43,32 @@ const PlayerActions = (props) => {
         checkSetBet(0);
     }
     
-    const handleOne = () => {
+    const handleDollar = (amount) => {
         if (addRemove === "add") {
-            
+            checkSetBet(parseInt(bet)+amount);
+        } else {
+            checkSetBet(parseInt(bet)-amount);
         }
     }
 
-
     const checkSetBet = (n) => {
-        if (n <= chips) {
+        if (n <= chips && n >= 0) {
             setBet(n);
+        } else if (n < 0) {
+            setBet(0);
         } else {
             setBet(chips);
         }
+    }
+
+    const handleAllIn = () => {
+        checkSetBet(chips);
+    }
+    
+    const handleRatio = (ratio) => {
+        // if (potChips === "pot") {
+        //     checkSetBet(pot)
+        // }
     }
 
 
@@ -71,18 +84,18 @@ const PlayerActions = (props) => {
             <div>
                 <button onClick={handlePot}>Pot {potChips === "pot" ? "(selected)" : null}</button>
                 <button onClick={handleChips}>Chips {potChips === "chips" ? "(selected)" : null}</button>
-                <button>1/3</button>
-                <button>1/2</button>
-                <button>2/3</button>
-                <button>All-In!</button>
+                <button onClick={() => handleRatio(1/3)}>1/3</button>
+                <button onClick={() => handleRatio(1/2)}>1/2</button>
+                <button onClick={() => handleRatio(2/3)}>2/3</button>
+                <button onClick={handleAllIn}>All-In!</button>
             </div>
             <div>
                 <button onClick={handleAdd}>+ {addRemove === "add" ? "(selected)" : null}</button>
                 <button onClick={handleRemove}>- {addRemove === "remove" ? "(selected)" : null}</button>
-                <button>$1</button>
-                <button>$5</button>
-                <button>$25</button>
-                <button>$100</button>
+                <button onClick={() => handleDollar(1)}>$1</button>
+                <button onClick={() => handleDollar(5)}>$5</button>
+                <button onClick={() => handleDollar(25)}>$25</button>
+                <button onClick={() => handleDollar(100)}>$100</button>
                 <button onClick={handleClear}>Clear</button>
             </div>
         </div>
