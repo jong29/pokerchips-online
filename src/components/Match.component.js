@@ -17,6 +17,12 @@ const Match = (props) => {
     setPlaying(Array(players.length).fill(true));
     // setPlaying([true, true, false]);
   }, []);
+
+  const handleChipCount = (id, nVal) => {
+    const modChips = [...chips]
+    modChips[id] = nVal;
+    setChips(modChips);
+  }
   
   const getRole = (id) => {
     const nid = id;
@@ -36,7 +42,7 @@ const Match = (props) => {
   
       <Round pot={pot}/>
       {players.map((player) => {
-        return(<PlayerInfo key={player.id} name={player.name} chips={chips[player.id]} role={getRole(player.id)} blind={blind} pot={pot}/>)
+        return(<PlayerInfo key={player.id} name={player.name} chips={chips[player.id]} role={getRole(player.id)} blind={blind} pot={pot} setPot={setPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
       })}
     </div>
   )

@@ -2,7 +2,7 @@ import { useState } from "react";
 import PlayerActions from "./PlayerActions.component";
 
 const PlayerInfo = (props) => {
-    const { name, chips, role, blind, pot } = props;
+    const { name, chips, role, blind, pot, setPot, handleChipCount } = props;
 
     const [ showActions, setShowActions ] = useState(false);
     
@@ -20,7 +20,7 @@ const PlayerInfo = (props) => {
                 {name}| Chips: {chips} | {role}
                 <button onClick={promptAction}>Select</button>
             </div>
-            {showActions ? <PlayerActions blind={blind} chips={chips} pot={pot}/> : null}
+            {showActions ? <PlayerActions blind={blind} chips={chips} pot={pot} setPot={setPot} handleChipCount={handleChipCount}/> : null}
         </div>
     )
 };

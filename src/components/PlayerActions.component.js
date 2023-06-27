@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const PlayerActions = (props) => {
-    const { blind, chips, pot } = props;
+    const { blind, chips, pot, setPot, handleChipCount } = props;
 
     const [bet, setBet] = useState(0);
     const [potChips, setPotChips] = useState("pot");
@@ -36,7 +36,7 @@ const PlayerActions = (props) => {
     }
 
     const handleSmallBlind = () => {
-        checkSetBet(parseInt(bet)+Math.floor(parseInt(blind)));
+        checkSetBet(parseInt(bet)+Math.floor(parseInt(blind)/2));
     }
 
     const handleClear = () => {
@@ -74,14 +74,16 @@ const PlayerActions = (props) => {
     }
 
     const handleBet = () => {
-        return
+        setPot(parseInt(pot) + parseInt(bet));
+        handleChipCount(parseInt(chips) - parseInt(bet));
+        setBet(0);
     }
 
 
     return(
         <div>
             <div>
-                {bet} <button>bet!</button>
+                {bet} <button onClick={handleBet}>bet!</button>
             </div>
             <div>
                 <button onClick={handleBigBlind}>Big Blind</button>
