@@ -15,7 +15,6 @@ const Match = (props) => {
     setDealer(initialDealer);
     setChips(Array(players.length).fill(buyin));
     setPlaying(Array(players.length).fill(true));
-    // setPlaying([true, true, false]);
   }, []);
 
   const handleChipCount = (id, nVal) => {
@@ -42,7 +41,15 @@ const Match = (props) => {
   
       <Round pot={pot}/>
       {players.map((player) => {
-        return(<PlayerInfo key={player.id} name={player.name} chips={chips[player.id]} role={getRole(player.id)} blind={blind} pot={pot} setPot={setPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
+        const config = {
+          name: player.name,
+          chips: chips[player.id],
+          role: getRole(player.id),
+          blind: blind,
+          pot: pot
+        }
+
+        return(<PlayerInfo key={player.id} config = {config} setPot={setPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
       })}
     </div>
   )

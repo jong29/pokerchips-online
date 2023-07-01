@@ -2,7 +2,8 @@ import { useState } from "react";
 import PlayerActions from "./PlayerActions.component";
 
 const PlayerInfo = (props) => {
-    const { name, chips, role, blind, pot, setPot, handleChipCount } = props;
+    const { config, setPot, handleChipCount } = props;
+    const { name, chips, role, blind, pot } = config;
 
     const [ showActions, setShowActions ] = useState(false);
     
