@@ -1,4 +1,4 @@
-const ARNums = (props) => {
+const AddRemNums = (props) => {
 
     const { amount, handleAmount, addRemove, setAddRemove } = props;
 
@@ -34,4 +34,4 @@ const ARNums = (props) => {
     )
 };
 
-export default ARNums;
+export default AddRemNums;

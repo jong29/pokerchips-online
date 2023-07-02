@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ARNums from "./ARNums.component";
+import AddRemNums from "./AddRemNums.component";
 
 const PlayerBet = (props) => {
-    const { blind, chips, pot, setPot, handleChipCount } = props;
+    const { blind, chips, pot, setPot, handleChipCount, setShowBet } = props;
 
     const [bet, setBet] = useState(0);
     const [potChips, setPotChips] = useState("pot");
@@ -59,6 +59,7 @@ const PlayerBet = (props) => {
         setPot(parseInt(pot) + parseInt(bet));
         handleChipCount(parseInt(chips) - parseInt(bet));
         setBet(0);
+        setShowBet(false);
     }
 
 
@@ -80,7 +81,7 @@ const PlayerBet = (props) => {
                 <button onClick={handleAllIn}>All-In!</button>
             </div>
             <div>
-                <ARNums amount={bet} handleAmount={checkSetBet} addRemove={addRemove} setAddRemove={setAddRemove} />
+                <AddRemNums amount={bet} handleAmount={checkSetBet} addRemove={addRemove} setAddRemove={setAddRemove} />
                 <button onClick={handleClear}>Clear</button>
             </div>
         </div>
