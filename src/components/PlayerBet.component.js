@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const PlayerActions = (props) => {
+const PlayerBet = (props) => {
     const { blind, chips, pot, setPot, handleChipCount } = props;
 
     const [bet, setBet] = useState(0);
@@ -110,4 +110,4 @@ const PlayerActions = (props) => {
     )
 };
 
-export default PlayerActions;
+export default PlayerBet;

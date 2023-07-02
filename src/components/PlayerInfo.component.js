@@ -1,27 +1,33 @@
 import { useState } from "react";
-import PlayerActions from "./PlayerActions.component";
+import PlayerBet from "./PlayerBet.component";
+import PlayerTake from "./PlayerTake.component";
 
 const PlayerInfo = (props) => {
     const { config, setPot, handleChipCount } = props;
     const { name, chips, role, blind, pot } = config;
 
-    const [ showActions, setShowActions ] = useState(false);
+    const [ showBet, setShowBet ] = useState(false);
+    const [ showTake, setShowTake ] = useState(false);
     
-    const promptAction = () => {
-        if (showActions) {
-            setShowActions(false);
-        } else {
-            setShowActions(true);
-        }
+    const handleBet = () => {
+        setShowBet(!showBet);
+        if (showTake) setShowTake(false);
+    }
+
+    const handleTake = () => {
+        setShowTake(!showTake);
+        if (showBet) setShowBet(false);
     }
 
     return (
         <div>
             <div>
                 {name}| Chips: {chips} | {role}
-                <button onClick={promptAction}>Select</button>
+                <button onClick={handleBet}>Bet</button>
+                <button onClick={handleTake}>Take</button>
             </div>
-            {showActions ? <PlayerActions blind={blind} chips={chips} pot={pot} setPot={setPot} handleChipCount={handleChipCount}/> : null}
+            {showBet ? <PlayerBet blind={blind} chips={chips} pot={pot} setPot={setPot} handleChipCount={handleChipCount}/> : null}
+            {showTake ? <PlayerTake pot={pot}/> : null}
         </div>
     )
 };

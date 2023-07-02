@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Round from './Round.component';
 import PlayerInfo  from "./PlayerInfo.component";
 
 const Match = (props) => {
@@ -8,13 +7,11 @@ const Match = (props) => {
   const [dealer, setDealer] = useState(-1);
   const [pot, setPot] = useState(0);
   const [chips, setChips] = useState([]);
-  const [playing, setPlaying] = useState([]);
 
   
   useEffect(() => {
     setDealer(initialDealer);
     setChips(Array(players.length).fill(buyin));
-    setPlaying(Array(players.length).fill(true));
   }, []);
 
   const handleChipCount = (id, nVal) => {
@@ -39,7 +36,7 @@ const Match = (props) => {
     <div>
       <h3 className="round-info">Big-Blind: {blind} | Small-Blind: {Math.floor(blind/2)}</h3>
   
-      <Round pot={pot}/>
+      <h2>Current Pot: {pot}</h2>
       {players.map((player) => {
         const config = {
           name: player.name,
