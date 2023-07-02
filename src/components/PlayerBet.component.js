@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ARNums from "./ARNums.component";
 
 const PlayerBet = (props) => {
     const { blind, chips, pot, setPot, handleChipCount } = props;
@@ -19,18 +20,6 @@ const PlayerBet = (props) => {
         }
     }
 
-    const handleAdd = () => {
-        if (addRemove !== "add") {
-            setAddRemove("add");
-        }
-    }
-
-    const handleRemove = () => {
-        if (addRemove !== "remove") {
-            setAddRemove("remove");
-        }
-    }
-
     const handleBigBlind = () => {
         checkSetBet(parseInt(bet)+parseInt(blind));
     }
@@ -43,13 +32,6 @@ const PlayerBet = (props) => {
         checkSetBet(0);
     }
     
-    const handleDollar = (amount) => {
-        if (addRemove === "add") {
-            checkSetBet(parseInt(bet)+amount);
-        } else {
-            checkSetBet(parseInt(bet)-amount);
-        }
-    }
 
     const checkSetBet = (n) => {
         if (n <= chips && n >= 0) {
@@ -98,12 +80,7 @@ const PlayerBet = (props) => {
                 <button onClick={handleAllIn}>All-In!</button>
             </div>
             <div>
-                <button onClick={handleAdd}>+ {addRemove === "add" ? "(selected)" : null}</button>
-                <button onClick={handleRemove}>- {addRemove === "remove" ? "(selected)" : null}</button>
-                <button onClick={() => handleDollar(1)}>$1</button>
-                <button onClick={() => handleDollar(5)}>$5</button>
-                <button onClick={() => handleDollar(25)}>$25</button>
-                <button onClick={() => handleDollar(100)}>$100</button>
+                <ARNums amount={bet} handleAmount={checkSetBet} addRemove={addRemove} setAddRemove={setAddRemove} />
                 <button onClick={handleClear}>Clear</button>
             </div>
         </div>
