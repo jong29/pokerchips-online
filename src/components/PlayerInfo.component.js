@@ -27,7 +27,7 @@ const PlayerInfo = (props) => {
                 <button onClick={handleTake}>Take</button>
             </div>
             {showBet ? <PlayerBet blind={blind} chips={chips} pot={pot} setPot={setPot} handleChipCount={handleChipCount}/> : null}
-            {showTake ? <PlayerTake pot={pot}/> : null}
+            {showTake ? <PlayerTake pot={pot} chips={chips} setPot={setPot} handleChipCount={handleChipCount}/> : null}
         </div>
     )
 };
