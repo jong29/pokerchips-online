@@ -4,7 +4,7 @@ import PlayerTake from "./PlayerTake.component";
 
 const PlayerInfo = (props) => {
     const { config, setPot, handleChipCount } = props;
-    const { name, chips, role, blind, pot } = config;
+    const { name, chips, blind, pot } = config;
 
     const [ showBet, setShowBet ] = useState(false);
     const [ showTake, setShowTake ] = useState(false);
@@ -22,7 +22,7 @@ const PlayerInfo = (props) => {
     return (
         <div>
             <div>
-                {name}| Chips: {chips} | {role}
+                {name}| Chips: {chips}
                 <button onClick={handleBet}>Bet</button>
                 <button onClick={handleTake}>Take</button>
             </div>

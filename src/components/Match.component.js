@@ -2,34 +2,19 @@ import { useState, useEffect } from "react";
 import PlayerInfo  from "./PlayerInfo.component";
 
 const Match = (props) => {
-  const { players, initialDealer, blind, buyin } = props;
-  const numPlayers = players.length;
-  const [dealer, setDealer] = useState(-1);
+  const { players, blind, buyin } = props;
   const [pot, setPot] = useState(0);
   const [chips, setChips] = useState([]);
 
   
   useEffect(() => {
-    setDealer(initialDealer);
     setChips(Array(players.length).fill(buyin));
-  }, []);
+  }, [players.length, buyin]);
 
   const handleChipCount = (id, nVal) => {
     const modChips = [...chips]
     modChips[id] = nVal;
     setChips(modChips);
-  }
-  
-  const getRole = (id) => {
-    const nid = id;
-    if (numPlayers < 3) {
-      if (nid === dealer) return "Dealer/Big-Blind";
-      return "Small Blind";
-    }
-
-    if (nid === dealer) return "Dealer";
-    if (nid === (dealer+1)%numPlayers) return "Small-Blind";
-    if (nid === (dealer+2)%numPlayers) return "Big-Blind";
   }
   
   return (
@@ -41,13 +26,13 @@ const Match = (props) => {
         const config = {
           name: player.name,
           chips: chips[player.id],
-          role: getRole(player.id),
           blind: blind,
           pot: pot
         }
 
         return(<PlayerInfo key={player.id} config = {config} setPot={setPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
       })}
+      <button>Add Player</button>
     </div>
   )
 }
