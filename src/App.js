@@ -32,6 +32,15 @@ const App = () => {
     setPlayers(playerArray);
     setMatch(true);
   };
+
+  const handleAdd = () => {
+    setPlayerNum(playerNum + 1);
+    const newPlayer = {
+      id: players.length,
+      name: `Player ${players.length}`
+    };
+    setPlayers([...players, newPlayer]);
+  }
   
   return (
     <div className='main'>
@@ -39,7 +48,7 @@ const App = () => {
       <button onClick={() => setShowSettings(!showSettings)}>Settings</button>
       {showSettings ? <SetChips handleBlind={setBlind} handleBuyin={setBuyin} handleShowSettings={setShowSettings} /> : null}
       {playerSelect ? <NumPlayers handleStart={handleStart} handleSetPlayers={setPlayerNum} numPlayers={playerNum} /> : null}
-      {startMatch ? <Match players={players} initialDealer={initialDealer} blind={blind} buyin={buyin} /> : null}
+      {startMatch ? <Match players={players} initialDealer={initialDealer} blind={blind} buyin={buyin} handleAdd={handleAdd}/> : null}
     </div>
   );
   

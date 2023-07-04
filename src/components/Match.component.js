@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PlayerInfo  from "./PlayerInfo.component";
 
 const Match = (props) => {
-  const { players, blind, buyin } = props;
+  const { players, blind, buyin, handleAdd } = props;
   const [pot, setPot] = useState(0);
   const [chips, setChips] = useState([]);
 
@@ -32,7 +32,7 @@ const Match = (props) => {
 
         return(<PlayerInfo key={player.id} config = {config} setPot={setPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
       })}
-      <button>Add Player</button>
+      <button onClick={handleAdd}>Add Player</button>
     </div>
   )
 }
