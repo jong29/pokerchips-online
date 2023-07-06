@@ -2,19 +2,44 @@ import { useState, useEffect } from "react";
 import PlayerInfo  from "./PlayerInfo.component";
 
 const Match = (props) => {
-  const { players, blind, buyin, handleAdd } = props;
+  const { playerNum, blind, buyin, setPlayerNum } = props;
   const [pot, setPot] = useState(0);
-  const [chips, setChips] = useState([]);
+  const [players, setPlayers] = useState([]);
 
   
   useEffect(() => {
-    setChips(Array(players.length).fill(buyin));
-  }, [players.length, buyin]);
+    const playerArray = []
+    for (let i=0; i<playerNum; i++) {
+      const newPlayer = {
+        id: playerArray.length,
+        name: `Player ${i}`,
+        chips: buyin
+      };
+      playerArray.push(newPlayer);
+    }
+    setPlayers(playerArray);
+
+  }, []);
 
   const handleChipCount = (id, nVal) => {
-    const modChips = [...chips]
-    modChips[id] = nVal;
-    setChips(modChips);
+    const newPlayers = [...players];
+    const playerToUpdate = newPlayers.find(obj => obj.id === id);
+    if (playerToUpdate) {
+      const updatedPlayer = {...playerToUpdate, chips: nVal};
+      const foundIndex = newPlayers.findIndex(obj => obj.id === id);
+      newPlayers[foundIndex] = updatedPlayer;
+      setPlayers(newPlayers);
+    }
+  }
+
+  const handleAdd = () => {
+    setPlayerNum(playerNum + 1);
+    const newPlayer = {
+      id: players.length,
+      name: `Player ${players.length}`,
+      chips: buyin
+    };
+    setPlayers([...players, newPlayer]);
   }
   
   return (
@@ -25,7 +50,7 @@ const Match = (props) => {
       {players.map((player) => {
         const config = {
           name: player.name,
-          chips: chips[player.id],
+          chips: player.chips,
           blind: blind,
           pot: pot
         }

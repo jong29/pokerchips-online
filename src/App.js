@@ -1,5 +1,5 @@
 import './App.css';
-import StartGame from './components/StartGame.component';
+import StartScreen from './components/StartScreen.component';
 import Resume from './components/Resume.component';
 
 
@@ -10,7 +10,7 @@ const App = () => {
     )
   } else {
     return(
-      <StartGame resume={false} />
+      <StartScreen resume={false} />
     )
   }
   

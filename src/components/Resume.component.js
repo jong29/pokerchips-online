@@ -1,5 +1,5 @@
 import { useState } from "react";
-import StartGame from "./StartGame.component";
+import StartScreen from "./StartScreen.component";
 
 
 const Resume = () => {
@@ -24,7 +24,7 @@ const Resume = () => {
     } else {
         return(
             <div>
-                {toResume ? <StartGame resume={true} /> : <StartGame resume={false} />}
+                {toResume ? <StartScreen resume={true} /> : <StartScreen resume={false} />}
             </div>
         )
     }
