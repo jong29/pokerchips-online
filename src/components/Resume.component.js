@@ -16,8 +16,8 @@ const Resume = () => {
             <div>
                 <h3>Continue Previous Game?</h3>
                 <div>
-                  <button onClick={handleClick(true)}>yes</button>
-                  <button onClick={handleClick(false)}>no</button>
+                  <button onClick={() => handleClick(true)}>yes</button>
+                  <button onClick={() => handleClick(false)}>no</button>
                 </div>
             </div>
         )
