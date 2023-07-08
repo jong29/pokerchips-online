@@ -5,7 +5,6 @@ const Match = (props) => {
   const { playerNum, blind, buyin, setPlayerNum } = props;
   const [pot, setPot] = useState(0);
   const [players, setPlayers] = useState([]);
-
   
   useEffect(() => {
     const playerArray = []
@@ -18,6 +17,9 @@ const Match = (props) => {
       playerArray.push(newPlayer);
     }
     setPlayers(playerArray);
+
+    localStorage.setItem("pot", pot);
+    localStorage.setItem("players", JSON.stringify(players));
 
   }, []);
 

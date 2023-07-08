@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import NumPlayers from './NumPlayers';
 import Match from './Match.component';
@@ -11,6 +11,11 @@ const StartScreen = ( {resume} ) => {
   const [showSettings, setShowSettings] = useState(false);
   const [blind, setBlind] = useState("10");
   const [buyin, setBuyin] = useState("1000");
+
+  useEffect(() => {
+    localStorage.setItem("blind", blind);
+    localStorage.setItem("buyin", buyin);
+  });
   
   const handleStart = () => {
     setPlayerSelect(false);
