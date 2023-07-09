@@ -2,25 +2,27 @@ import { useState, useEffect } from "react";
 import PlayerInfo  from "./PlayerInfo.component";
 
 const Match = (props) => {
-  const { playerNum, blind, buyin, setPlayerNum } = props;
-  const [pot, setPot] = useState(0);
+  const { playerNum, blind, buyin, setPlayerNum, resume } = props;
+  const [pot, setPot] = useState(() => resume ? parseInt(localStorage.pot) : 0);
   const [players, setPlayers] = useState([]);
   
   useEffect(() => {
-    const playerArray = []
-    for (let i=0; i<playerNum; i++) {
-      const newPlayer = {
-        id: playerArray.length,
-        name: `Player ${i}`,
-        chips: buyin
-      };
-      playerArray.push(newPlayer);
+    if (resume) {
+      setPlayers(JSON.parse(localStorage.players));
+    } else {
+      const playerArray = []
+      for (let i=0; i<playerNum; i++) {
+        const newPlayer = {
+          id: playerArray.length,
+          name: `Player ${i}`,
+          chips: buyin
+        };
+        playerArray.push(newPlayer);
+      }
+      setPlayers(playerArray);  
+      localStorage.setItem("pot", pot);
+      localStorage.setItem("players", JSON.stringify(players));
     }
-    setPlayers(playerArray);
-
-    localStorage.setItem("pot", pot);
-    localStorage.setItem("players", JSON.stringify(players));
-
   }, []);
 
   const handleSetPot = (val) => {
@@ -47,7 +49,9 @@ const Match = (props) => {
       name: `Player ${players.length}`,
       chips: buyin
     };
-    setPlayers([...players, newPlayer]);
+    const newPlayerArray = [...players, newPlayer]
+    setPlayers(newPlayerArray);
+    localStorage.setItem("players", JSON.stringify(newPlayerArray));
   }
   
   return (
