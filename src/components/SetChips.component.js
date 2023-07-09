@@ -8,10 +8,12 @@ const SetChips = ({ handleBlind, handleBuyin, handleShowSettings}) => {
 
   const onBlindChange = (event) => {
       setBlind(event.target.value);
+      localStorage.setItem("blind", event.target.value);
     }
   
   const onBuyinChange = (event) => {
     setBuyin(event.target.value);
+    localStorage.setItem("buyin", event.target.value);
   }
 
   const handleSettings = () => {

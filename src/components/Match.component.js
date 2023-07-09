@@ -23,6 +23,11 @@ const Match = (props) => {
 
   }, []);
 
+  const handleSetPot = (val) => {
+    setPot(val);
+    localStorage.setItem("pot", val);
+  }
+
   const handleChipCount = (id, nVal) => {
     const newPlayers = [...players];
     const playerToUpdate = newPlayers.find(obj => obj.id === id);
@@ -31,6 +36,7 @@ const Match = (props) => {
       const foundIndex = newPlayers.findIndex(obj => obj.id === id);
       newPlayers[foundIndex] = updatedPlayer;
       setPlayers(newPlayers);
+      localStorage.setItem("players", JSON.stringify(newPlayers));
     }
   }
 
@@ -57,7 +63,7 @@ const Match = (props) => {
           pot: pot
         }
 
-        return(<PlayerInfo key={player.id} config = {config} setPot={setPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
+        return(<PlayerInfo key={player.id} config = {config} setPot={handleSetPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
       })}
       <button onClick={handleAdd}>Add Player</button>
     </div>
