@@ -1,6 +1,7 @@
 import './App.css';
 import StartScreen from './components/StartScreen.component';
 import Resume from './components/Resume.component';
+import './App.css';
 
 
 const App = () => {
@@ -12,11 +13,15 @@ const App = () => {
 
   if (localStorage.getItem("start")==="true") {
     return(
-      <Resume />
+      <div className='App'>
+        <Resume />
+      </div>
     )
   } else {
     return(
-      <StartScreen resume={false} />
+      <div className='App'>
+        <StartScreen resume={false} />
+      </div>
     )
   }
   
