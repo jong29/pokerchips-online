@@ -14,12 +14,14 @@ const App = () => {
   if (localStorage.getItem("start")==="true") {
     return(
       <div className='App'>
+        <h1 className='title'>Online Poker Chips!</h1>
         <Resume />
       </div>
     )
   } else {
     return(
       <div className='App'>
+        <h1 className='title'>Online Poker Chips!</h1>
         <StartScreen resume={false} />
       </div>
     )

@@ -28,11 +28,5 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.title { color: #fff; font-family: 'Righteous', cursive; font-size: 65px; font-weight: normal;
+   line-height: 60px; margin: 10px 0 20px; text-transform: uppercase; }

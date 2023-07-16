@@ -33,7 +33,6 @@ const StartScreen = ( {resume} ) => {
 
   return (
     <div className='main'>
-      <h1>Online Poker Chips!</h1>
       <button onClick={() => setShowSettings(!showSettings)}>Settings</button>
       {showSettings ? <SetChips handleBlind={setBlind} handleBuyin={setBuyin} handleShowSettings={setShowSettings} /> : null}
       {playerSelect ? <NumPlayers handleStart={handleStart} handleSetPlayers={setPlayerNum} numPlayers={playerNum} /> : null}
