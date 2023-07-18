@@ -53,6 +53,10 @@ const Match = (props) => {
     setPlayers(newPlayerArray);
     localStorage.setItem("players", JSON.stringify(newPlayerArray));
   }
+
+  const handleRename = () => {
+    return;
+  }
   
   return (
     <div>
@@ -70,6 +74,7 @@ const Match = (props) => {
         return(<PlayerInfo key={player.id} config = {config} setPot={handleSetPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
       })}
       <button onClick={handleAdd}>Add Player</button>
+      <button onClick={handleRename}>Rename</button>
     </div>
   )
 }
