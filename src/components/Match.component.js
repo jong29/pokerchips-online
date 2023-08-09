@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import PlayerInfo  from "./PlayerInfo.component";
+import PlayerRename from "./PlayerRename.component";
 
 const Match = (props) => {
   const { playerNum, blind, buyin, setPlayerNum, resume } = props;
   const [pot, setPot] = useState(() => resume ? parseInt(localStorage.pot) : 0);
   const [players, setPlayers] = useState([]);
+  const [showRename, setShowRename] = useState(false);
   
   useEffect(() => {
     if (resume) {
@@ -55,7 +57,7 @@ const Match = (props) => {
   }
 
   const handleRename = () => {
-    return;
+    setShowRename(!showRename);
   }
   
   return (
@@ -71,10 +73,14 @@ const Match = (props) => {
           pot: pot
         }
 
-        return(<PlayerInfo key={player.id} config = {config} setPot={handleSetPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>)
+        if (!showRename) {
+          return(<PlayerInfo key={player.id} config = {config} setPot={handleSetPot} handleChipCount={(nVal) => handleChipCount(player.id, nVal)}/>);
+        } else {
+          return(<PlayerRename key={player.id} config = {config} />);
+        }
       })}
       <button onClick={handleAdd}>Add Player</button>
-      <button onClick={handleRename}>Rename</button>
+      {!showRename ? <button onClick={handleRename}>Rename</button> : <button onClick={handleRename}>Done</button>}
     </div>
   )
 }

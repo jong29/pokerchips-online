@@ -11,22 +11,13 @@ const App = () => {
     console.log(localStorage.getItem(v));
   }
 
-  if (localStorage.getItem("start")==="true") {
-    return(
-      <div className='App'>
-        <h1 className='title'>Online Poker Chips!</h1>
-        <Resume />
-      </div>
-    )
-  } else {
-    return(
-      <div className='App'>
-        <h1 className='title'>Online Poker Chips!</h1>
-        <StartScreen resume={false} />
-      </div>
-    )
-  }
-  
+  return (
+    <div className='App'>
+      <h1 className='title'>Online Poker Chips!</h1>
+      {localStorage.getItem("start")==="true" ? <Resume /> : <StartScreen resume={false} />}
+    </div>
+  )
+
 }
 
 export default App;
