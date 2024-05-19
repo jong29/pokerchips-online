@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <h1 className='title'>Online Poker Chips!</h1>
+      <h1 className='title'>Online Poker Chips</h1>
       {localStorage.getItem("start")==="true" ? <Resume /> : <StartScreen resume={false} />}
     </div>
   )
